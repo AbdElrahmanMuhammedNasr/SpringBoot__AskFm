@@ -5,5 +5,6 @@ import com.example.demo.ZModel.UserSetting;
 public interface UserSettingInterfaceOperation {
 
     Object getUserSetting(Long Id);
-    void updateSetting(Object setting);
+    void updateSetting(UserSetting setting);
+
 }

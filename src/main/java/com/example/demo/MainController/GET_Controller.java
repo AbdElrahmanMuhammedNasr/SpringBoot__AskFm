@@ -31,7 +31,7 @@ public class GET_Controller {
         @RequestMapping(value = "/getOneUser/{email}", method = RequestMethod.GET)
         public User getOneUserControl(@PathVariable(value = "email") String email) {
             System.out.println(email);
-            System.out.println( "the data is "+userInterfaceOperation.getUserByEmail(email));
+//            System.out.println( "the data is "+userInterfaceOperation.getUserByEmail(email));
             return  userInterfaceOperation.getUserByEmail(email);
          }
 
@@ -73,13 +73,13 @@ public class GET_Controller {
         /* ********************************************question**********************************************************/
         @RequestMapping(value = "/getUserQuestion/{email}", method = RequestMethod.GET)
         public  Object getUserQuestionsControl(@PathVariable(value = "email")String email) {
-            Object TheUser = getOneUserControl(email);
+            User TheUser = getOneUserControl(email);
             return questionsInterfaceOperation.getUserQuestions(TheUser);
         }
 
         @RequestMapping(value = "/getUserQuestionsNumber/{email}", method = RequestMethod.GET)
         public  Object getUserQuestionsNumberControl(@PathVariable(value = "email")String email) {
-            Object TheUser = getOneUserControl(email);
+            User TheUser = getOneUserControl(email);
             return questionsInterfaceOperation.getNumberOfQuestionsPerUser(TheUser);
         }
 

@@ -17,7 +17,7 @@ public class UserSettingInterfaceOperationImpl implements UserSettingInterfaceOp
     }
 
     @Override
-    public void updateSetting(Object setting) {
-            
+    public void updateSetting(UserSetting setting) {
+            userSettingRepo.save(setting);
     }
 }

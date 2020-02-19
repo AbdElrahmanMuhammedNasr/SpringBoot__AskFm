@@ -1,15 +1,16 @@
 package com.example.demo.XReposotry;
 
 import com.example.demo.ZModel.Questions;
+import com.example.demo.ZModel.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface QuestionRepo extends JpaRepository<Questions,Long> {
 
-        List<Object> findByUser(Object user);
-        int countAllByUser(Object user);
-        boolean deleteAllByUser(Object user);
+        List<User> findByUser(User user);
+        int countAllByUser(User user);
+        void deleteAllByUser(User user);
         void deleteById(Long id);
 
 
