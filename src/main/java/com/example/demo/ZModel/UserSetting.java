@@ -15,7 +15,7 @@ public class UserSetting {
     @Column
     private  String location = "";
     @Column
-    private String bio="";
+        private String bio="";
     @Column
     private String [] anotherWebSites = new String[]{};
     @Column

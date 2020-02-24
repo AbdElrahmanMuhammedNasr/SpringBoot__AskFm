@@ -20,9 +20,22 @@ public class UPDATE_Controller {
 
 
     // update Setting
+    /*
+    * {
+	"id":4,
+	"location":"not from here",
+	"bio":"simple bio",
+	"anotherWebSites":["true","true","true","true"],
+	"hashTags":"not hash",
+	"userName":"new userNAme",
+	"dateOfBirth":null,
+	"gender":"FEMALE",
+	"privacyQuestion":[true,true,true,true]
+    }
+* */
+
     @PutMapping(value = "/updateSetting")
     public void updateSetting(@RequestBody UserSetting newSetting){
-        System.out.println("the new setting is "+newSetting);
         userSettingInterfaceOperation.updateSetting(newSetting);
 
     }
