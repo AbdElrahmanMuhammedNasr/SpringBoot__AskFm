@@ -66,7 +66,13 @@ public class POST_Controller {
 
 
     // add new question
-    //user here not the asker
+    //user you want to ask him
+    /*
+    * {
+	"question":"W_A_Y",
+	"email":"T@T.com" this is me
+    }
+    * */
     @PostMapping(value = "/askUser/{user}")
     public  void addNewQuestion(@PathVariable("user") String user, @RequestBody Questions question){
             User theUser = userInterfaceOperation.getUserByEmail(user);
