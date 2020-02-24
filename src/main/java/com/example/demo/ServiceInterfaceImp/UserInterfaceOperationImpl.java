@@ -6,9 +6,11 @@ import com.example.demo.ZModel.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserInterfaceOperationImpl implements UserInterfaceOperation {
 
     @Autowired
@@ -25,10 +27,6 @@ public class UserInterfaceOperationImpl implements UserInterfaceOperation {
         return userRepo.findAll();
     }
 
-//    @Override
-//    public Object getUserProfile(String email) {
-//        return userRepo.getUserProfile(email);
-//    }
 
     @Override
     public void deleteTheUser(String email) {
@@ -40,9 +38,4 @@ public class UserInterfaceOperationImpl implements UserInterfaceOperation {
             userRepo.save(user);
     }
 
-//    @Override
-//    public void updateSetting(String email) {
-//        userRepo.updateSetting(email);
-//
-//    }
 }

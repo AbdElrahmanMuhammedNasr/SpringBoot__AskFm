@@ -21,6 +21,7 @@ public class DELETE_Controller {
 
 
 
+    /********************************** all work *****************************/
 
     @DeleteMapping(value = "/deleteUser/{email}" )
     public void deleteUser(@PathVariable("email") String email){
@@ -32,7 +33,6 @@ public class DELETE_Controller {
         questionsInterfaceOperation.deleteOneUserQuestion(id);
     }
 
-    /***************************************************************/
     @DeleteMapping(value = "/deleteAllUserQuestions/{email}")
     public void deleteAllQuestionUser(@PathVariable("email") String email){
         User user = userInterfaceOperation.getUserByEmail(email);
