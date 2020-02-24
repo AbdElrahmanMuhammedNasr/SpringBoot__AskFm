@@ -13,13 +13,13 @@ public class UserSetting {
     @GeneratedValue
     private  Long id;
     @Column
-    private  String location;
+    private  String location = "";
     @Column
-    private String bio;
+    private String bio="";
     @Column
-    private String [] anotherWebSites = new String[3];
+    private String [] anotherWebSites = new String[]{};
     @Column
-    private String hashTags;
+    private String hashTags="";
     @Column
     private String userName;
     @Column
@@ -27,7 +27,7 @@ public class UserSetting {
     @Column
     private String gender;
     @Column
-    private boolean [] privacyQuestion = new boolean[4] ;
+    private boolean [] privacyQuestion = new boolean[]{true,true,true,true};
 
 //    @OneToOne
 //    private User user ;

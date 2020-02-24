@@ -4,13 +4,10 @@ import javax.persistence.*;
 
 @Embeddable
 public class UserProfile {
-
     @Column
     private int followers = 0;
-
     @Column
     private boolean active = true;
-
 
     public int getFollowers() {
         return followers;

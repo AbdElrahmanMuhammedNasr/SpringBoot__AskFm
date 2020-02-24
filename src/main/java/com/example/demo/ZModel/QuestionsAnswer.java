@@ -22,7 +22,6 @@ public class QuestionsAnswer {
     private String question;
     @Column
     private Timestamp date;
-
     @ManyToOne
     private User user;
 

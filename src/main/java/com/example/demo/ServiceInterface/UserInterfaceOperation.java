@@ -8,5 +8,6 @@ public interface UserInterfaceOperation {
     User getUserByEmail(String email);
     List<User> getAllUsers();
     void deleteTheUser(String email);
+    void  addUser(User user);
 
 }

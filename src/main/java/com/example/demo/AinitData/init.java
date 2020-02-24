@@ -7,7 +7,9 @@ import com.example.demo.ZModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -53,6 +55,8 @@ public class init implements CommandLineRunner {
             User user1 = new User();
             user1.setEmail("abdo@abdo.com");
             user1.setFullName("AbdElrahman");
+
+//             user1.saveImageFile("/media/abo/01D4C88B86503600/Photo/2.jpg");
 
             User user2 = new User();
             user2.setEmail("Hassan@Hassan.com");

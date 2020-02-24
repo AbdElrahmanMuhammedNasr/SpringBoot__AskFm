@@ -2,7 +2,8 @@ package com.example.demo.ZModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.lang.Nullable;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -17,20 +18,24 @@ public class User {
     @GeneratedValue
     private Long id;
 
+//    @Lob
+//    private  byte [] image ;
     @Column
     @Email
     private String email;
-
     @Column
     @Length(min = 5 , max = 15)
     private String fullName;
 
 //    @Embedded
     @OneToOne(cascade = CascadeType.ALL)
+    @Nullable
     private UserSetting userSetting;
 
     @Embedded
+    @Nullable
     private UserProfile userProfile;
+
 
 
 
@@ -57,6 +62,14 @@ public class User {
     public Long getId() {
         return id;
     }
+
+//    public byte[] getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(byte[] image) {
+//        this.image = image;
+//    }
 
     public String getEmail() {
         return email;
@@ -123,7 +136,20 @@ public class User {
     }
 
 
+//    public void saveImageFile(MultipartFile file) throws Exception{
+//
+//            byte[] byteObjects = new byte[file.getBytes().length];
+//            int i = 0;
+//            for (byte b : file.getBytes()){
+//                byteObjects[i++] = b;
+//            }
+//            setImage(byteObjects);
+//
+//    }
+
+
 }
+
 
 
 

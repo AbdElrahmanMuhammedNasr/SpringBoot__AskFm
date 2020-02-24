@@ -4,10 +4,7 @@ import com.example.demo.ServiceInterface.BlockInterfaceOperation;
 import com.example.demo.ServiceInterface.QuestionAnswerInterfaceOperation;
 import com.example.demo.ServiceInterface.QuestionsInterfaceOperation;
 import com.example.demo.ServiceInterface.UserInterfaceOperation;
-import com.example.demo.ZModel.BlockList;
-import com.example.demo.ZModel.Questions;
-import com.example.demo.ZModel.QuestionsAnswer;
-import com.example.demo.ZModel.User;
+import com.example.demo.ZModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +12,8 @@ import java.sql.Date;
 import java.sql.Time;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class POST_Controller {
-
     @Autowired
     private QuestionAnswerInterfaceOperation questionAnswerInterfaceOperation;
     @Autowired
@@ -40,9 +36,12 @@ public class POST_Controller {
     // add to block list
     @PostMapping(value = "/block/{owner}")
     public void  addToBlockList(@PathVariable("owner") String owner , @RequestBody BlockList blockList){
-        User user = userInterfaceOperation.getUserByEmail(owner);
+        if(!owner.equals("null")) {
+            User user = userInterfaceOperation.getUserByEmail(owner);
+            blockList.setUser(user);
+        }
 //        System.out.println(user.getEmail());
-        blockList.setUser(user);
+
         // save block
         blockInterfaceOperation.addUserToBlockList(blockList);
 
@@ -56,6 +55,20 @@ public class POST_Controller {
             question.setUser(theUser);
             question.setTime(new Time(new Date(1900,1,1).getTime()));
             questionsInterfaceOperation.saveQuestion(question);
+    }
+
+    // add user
+    @PostMapping(value = "/addUser")
+    public  void addNewUser(@RequestBody User user){
+        try {
+            UserProfile userProfile = new UserProfile();
+              user.setUserProfile(userProfile);
+
+            userInterfaceOperation.addUser(user);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+
+        }
     }
 
 

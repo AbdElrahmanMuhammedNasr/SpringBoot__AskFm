@@ -16,7 +16,7 @@ public class QuestionsInterfaceOperationImpl implements QuestionsInterfaceOperat
     private QuestionRepo questionRepo;
 
     @Override
-    public List<User> getUserQuestions(User user) {
+    public List<Questions> getUserQuestions(User user) {
         return questionRepo.findByUser(user);
     }
 

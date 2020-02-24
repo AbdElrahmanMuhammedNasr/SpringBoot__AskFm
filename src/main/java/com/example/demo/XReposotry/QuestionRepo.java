@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface QuestionRepo extends JpaRepository<Questions,Long> {
 
-        List<User> findByUser(User user);
+        List<Questions> findByUser(User user);
         int countAllByUser(User user);
         void deleteAllByUser(User user);
         void deleteById(Long id);

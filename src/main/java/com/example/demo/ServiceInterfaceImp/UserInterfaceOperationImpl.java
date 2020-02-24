@@ -35,6 +35,11 @@ public class UserInterfaceOperationImpl implements UserInterfaceOperation {
          userRepo.deleteByEmail(email);
     }
 
+    @Override
+    public void addUser(User user) {
+            userRepo.save(user);
+    }
+
 //    @Override
 //    public void updateSetting(String email) {
 //        userRepo.updateSetting(email);
