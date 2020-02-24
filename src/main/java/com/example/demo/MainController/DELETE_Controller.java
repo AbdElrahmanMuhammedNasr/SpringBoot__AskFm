@@ -20,7 +20,6 @@ public class DELETE_Controller {
     private QuestionsInterfaceOperation questionsInterfaceOperation;
 
 
-
     /********************************** all work *****************************/
 
     @DeleteMapping(value = "/deleteUser/{email}" )
@@ -36,10 +35,7 @@ public class DELETE_Controller {
     @DeleteMapping(value = "/deleteAllUserQuestions/{email}")
     public void deleteAllQuestionUser(@PathVariable("email") String email){
         User user = userInterfaceOperation.getUserByEmail(email);
-        for (Questions q:questionsInterfaceOperation.getUserQuestions(user) ) {
-            questionsInterfaceOperation.deleteOneUserQuestion(q.getId());
-        }
-
+        questionsInterfaceOperation.deleteAllUserQuestion(user);
     }
 
 }

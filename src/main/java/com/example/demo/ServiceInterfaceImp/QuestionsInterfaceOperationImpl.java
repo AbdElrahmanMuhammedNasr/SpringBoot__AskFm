@@ -7,9 +7,11 @@ import com.example.demo.ZModel.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class QuestionsInterfaceOperationImpl implements QuestionsInterfaceOperation {
 
     @Autowired
@@ -23,6 +25,11 @@ public class QuestionsInterfaceOperationImpl implements QuestionsInterfaceOperat
     @Override
     public int getNumberOfQuestionsPerUser(User user) {
         return questionRepo.countAllByUser(user);
+    }
+
+    @Override
+    public void deleteAllUserQuestion(User user) {
+           questionRepo.deleteAllByUser(user) ;
     }
 
     @Override

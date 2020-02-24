@@ -16,7 +16,6 @@ public class UserInterfaceOperationImpl implements UserInterfaceOperation {
     @Autowired
     private UserRepo userRepo;
 
-
     @Override
     public User getUserByEmail(String email) {
         return userRepo.findByEmail(email);

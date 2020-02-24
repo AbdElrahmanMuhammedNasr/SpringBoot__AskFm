@@ -8,6 +8,7 @@ import java.util.List;
 public interface QuestionsInterfaceOperation {
     List<Questions> getUserQuestions(User user);
     int getNumberOfQuestionsPerUser(User user);
+    void deleteAllUserQuestion(User user);
     void deleteOneUserQuestion(Long id );
     void  saveQuestion(Questions questions);
 
