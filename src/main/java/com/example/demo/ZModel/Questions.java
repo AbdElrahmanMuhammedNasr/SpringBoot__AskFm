@@ -11,17 +11,13 @@ public class Questions {
     @Id
     @GeneratedValue
     private Long id;
-
     @Column
     private String question;
-
     @Column
     @Email
     private String email; // the eamil of quesrioner
-
     @Column
     private Time time;
-
     @ManyToOne
     private User user;
 

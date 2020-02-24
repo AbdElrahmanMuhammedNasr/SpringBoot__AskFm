@@ -26,29 +26,47 @@ public class POST_Controller {
 
 
      // this the user answer the question
-    @PostMapping(value = "/answerQuestion")
-    public void  answerQuestion (@RequestBody QuestionsAnswer questionsAnswer){
+    @PostMapping(value = "/answerQuestion/{questionId}/{owner}")
+    /*
+    {
+	"email":"Hassan@hassam.com",
+	"answer":"12",
+	"question":"how old"
+    }
+    * */
+    public void  answerQuestion (@PathVariable("questionId") Long id, @PathVariable("owner") String ownerEmail, @RequestBody QuestionsAnswer questionsAnswer){
         // must get user and add it
-//        questionsAnswer.setUser();
+        if(!ownerEmail.equals("null")) {
+            User user = userInterfaceOperation.getUserByEmail(ownerEmail);
+            questionsAnswer.setUser(user);
+        }
+//       save answer
         questionAnswerInterfaceOperation.saveAnswerofQuestion(questionsAnswer);
+        // delete the duestion
+        questionsInterfaceOperation.deleteOneUserQuestion(id);
     }
 
-    // add to block list
+    // add to block list -> you will sent email want to bloc in post
+    /*
+    *{
+	"email":"T@T.com"
+    }
+    * */
     @PostMapping(value = "/block/{owner}")
-    public void  addToBlockList(@PathVariable("owner") String owner , @RequestBody BlockList blockList){
-        if(!owner.equals("null")) {
-            User user = userInterfaceOperation.getUserByEmail(owner);
+    public void  addToBlockList(@PathVariable("owner") String ownerEmail , @RequestBody BlockList blockList){
+        if(!ownerEmail.equals("null")) {
+            User user = userInterfaceOperation.getUserByEmail(ownerEmail);
             blockList.setUser(user);
         }
-//        System.out.println(user.getEmail());
-
         // save block
         blockInterfaceOperation.addUserToBlockList(blockList);
 
     }
 
+
+
     // add new question
-    //user here not the asker  not the owner
+    //user here not the asker
     @PostMapping(value = "/askUser/{user}")
     public  void addNewQuestion(@PathVariable("user") String user, @RequestBody Questions question){
             User theUser = userInterfaceOperation.getUserByEmail(user);
@@ -57,7 +75,34 @@ public class POST_Controller {
             questionsInterfaceOperation.saveQuestion(question);
     }
 
-    // add user
+    // add user -> work
+    /*
+    {
+      "email": "T@T.com",
+      "fullName": "TTTTTT",
+
+
+
+       "userSetting": {
+
+        "location": "tnata",
+
+        "bio": "",
+
+        "anotherWebSites": null,
+
+        "hashTags": "",
+
+        "userName": "TAREK",
+
+        "dateOfBirth":null,
+
+        "gender": "FEMALE",
+
+        "privacyQuestion": null
+       }
+}
+    * */
     @PostMapping(value = "/addUser")
     public  void addNewUser(@RequestBody User user){
         try {

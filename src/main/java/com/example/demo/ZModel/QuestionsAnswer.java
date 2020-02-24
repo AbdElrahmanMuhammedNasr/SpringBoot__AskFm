@@ -12,7 +12,6 @@ public class QuestionsAnswer {
     @Id
     @GeneratedValue
     private Long id;
-
     @Column
     @Email
     private String email ; // the questioner
@@ -24,6 +23,8 @@ public class QuestionsAnswer {
     private Timestamp date;
     @ManyToOne
     private User user;
+
+
 
     public Long getId() {
         return id;
