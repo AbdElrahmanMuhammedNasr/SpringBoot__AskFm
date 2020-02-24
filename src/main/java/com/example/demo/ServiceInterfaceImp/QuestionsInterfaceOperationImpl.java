@@ -26,11 +26,6 @@ public class QuestionsInterfaceOperationImpl implements QuestionsInterfaceOperat
     }
 
     @Override
-    public void deleteAllUserQuestion(User user) {
-           questionRepo.deleteAllByUser(user) ;
-    }
-
-    @Override
     public void deleteOneUserQuestion(Long id) {
            questionRepo.deleteById(id);
     }

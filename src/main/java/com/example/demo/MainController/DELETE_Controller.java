@@ -4,6 +4,7 @@ import com.example.demo.ServiceInterface.QuestionsInterfaceOperation;
 import com.example.demo.ServiceInterface.UserInterfaceOperation;
 import com.example.demo.XReposotry.QuestionRepo;
 import com.example.demo.XReposotry.UserRepo;
+import com.example.demo.ZModel.Questions;
 import com.example.demo.ZModel.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,8 @@ public class DELETE_Controller {
     private QuestionsInterfaceOperation questionsInterfaceOperation;
 
 
+
+
     @DeleteMapping(value = "/deleteUser/{email}" )
     public void deleteUser(@PathVariable("email") String email){
          userInterfaceOperation.deleteTheUser(email);
@@ -32,8 +35,10 @@ public class DELETE_Controller {
     /***************************************************************/
     @DeleteMapping(value = "/deleteAllUserQuestions/{email}")
     public void deleteAllQuestionUser(@PathVariable("email") String email){
-        User TheUser = userInterfaceOperation.getUserByEmail(email);
-         questionsInterfaceOperation.deleteAllUserQuestion(TheUser);
+        User user = userInterfaceOperation.getUserByEmail(email);
+        for (Questions q:questionsInterfaceOperation.getUserQuestions(user) ) {
+            questionsInterfaceOperation.deleteOneUserQuestion(q.getId());
+        }
 
     }
 
