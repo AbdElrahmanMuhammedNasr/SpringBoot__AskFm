@@ -24,18 +24,31 @@ public class DELETE_Controller {
 
     @DeleteMapping(value = "/deleteUser/{email}" )
     public void deleteUser(@PathVariable("email") String email){
-         userInterfaceOperation.deleteTheUser(email);
+        try {
+            userInterfaceOperation.deleteTheUser(email);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @DeleteMapping(value = "/delete/{indexQuestion}")
     public void deleteOneQuestion(@PathVariable("indexQuestion") Long id) {
-        questionsInterfaceOperation.deleteOneUserQuestion(id);
+        try {
+            questionsInterfaceOperation.deleteOneUserQuestion(id);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
     @DeleteMapping(value = "/deleteAllUserQuestions/{email}")
     public void deleteAllQuestionUser(@PathVariable("email") String email){
-        User user = userInterfaceOperation.getUserByEmail(email);
-        questionsInterfaceOperation.deleteAllUserQuestion(user);
+        try {
+            User user = userInterfaceOperation.getUserByEmail(email);
+            questionsInterfaceOperation.deleteAllUserQuestion(user);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
     }
 
 }

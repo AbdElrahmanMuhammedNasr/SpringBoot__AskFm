@@ -41,15 +41,21 @@ public class POST_Controller {
     }
     * */
     public void  answerQuestion (@PathVariable("questionId") Long id, @PathVariable("owner") String ownerEmail, @RequestBody QuestionsAnswer questionsAnswer){
-        // must get user and add it
-        if(!ownerEmail.equals("null")) {
-            User user = userInterfaceOperation.getUserByEmail(ownerEmail);
-            questionsAnswer.setUser(user);
-        }
-//       save answer
-        questionAnswerInterfaceOperation.saveAnswerofQuestion(questionsAnswer);
-        // delete the duestion
-        questionsInterfaceOperation.deleteOneUserQuestion(id);
+       try{
+           // must get user and add it
+           if(!ownerEmail.equals("null")) {
+               User user = userInterfaceOperation.getUserByEmail(ownerEmail);
+               questionsAnswer.setUser(user);
+           }
+            //save answer
+           questionAnswerInterfaceOperation.saveAnswerofQuestion(questionsAnswer);
+           // delete the duestion
+           questionsInterfaceOperation.deleteOneUserQuestion(id);
+
+       }catch (Exception ex){
+           System.out.println(ex.getMessage());
+
+       }
     }
 
     // add to block list -> you will sent email want to bloc in post
@@ -60,12 +66,17 @@ public class POST_Controller {
     * */
     @PostMapping(value = "/block/{owner}")
     public void  addToBlockList(@PathVariable("owner") String ownerEmail , @RequestBody BlockList blockList){
-        if(!ownerEmail.equals("null")) {
-            User user = userInterfaceOperation.getUserByEmail(ownerEmail);
-            blockList.setUser(user);
+        try{
+            if(!ownerEmail.equals("null")) {
+                User user = userInterfaceOperation.getUserByEmail(ownerEmail);
+                blockList.setUser(user);
+            }
+            // save block
+            blockInterfaceOperation.addUserToBlockList(blockList);
+
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
         }
-        // save block
-        blockInterfaceOperation.addUserToBlockList(blockList);
 
     }
 
@@ -81,10 +92,15 @@ public class POST_Controller {
     * */
     @PostMapping(value = "/askUser/{user}")
     public  void addNewQuestion(@PathVariable("user") String user, @RequestBody Questions question){
+        try{
             User theUser = userInterfaceOperation.getUserByEmail(user);
             question.setUser(theUser);
             question.setTime(new Time(new Date(1900,1,1).getTime()));
             questionsInterfaceOperation.saveQuestion(question);
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     // add user -> work

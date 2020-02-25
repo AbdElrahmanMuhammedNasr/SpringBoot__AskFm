@@ -36,7 +36,12 @@ public class UPDATE_Controller {
 
     @PutMapping(value = "/updateSetting")
     public void updateSetting(@RequestBody UserSetting newSetting){
-        userSettingInterfaceOperation.updateSetting(newSetting);
+        try {
+            userSettingInterfaceOperation.updateSetting(newSetting);
+
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
 
     }
 }

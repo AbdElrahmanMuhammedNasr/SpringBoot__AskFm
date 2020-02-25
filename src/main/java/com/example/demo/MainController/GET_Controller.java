@@ -48,23 +48,33 @@ public class GET_Controller {
         /* **************************************setting****************************************************************/
         @RequestMapping(value = "/getUserSetting/{email}", method = RequestMethod.GET)
         public Object getUserSettingControl(@PathVariable(value = "email")String email){
-            User TheUser = getOneUserControl(email);
-            return  userSettingInterfaceOperation.getUserSetting(TheUser.getUserSetting().getId());
-        }
+            try{
+                User TheUser = getOneUserControl(email);
+                return  userSettingInterfaceOperation.getUserSetting(TheUser.getUserSetting().getId());
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
+           }
 
         /* ***************************************post***************************************************************/
 
         // to return all post or question answer
         @RequestMapping(value = "/getAllAnswerQuestion", method = RequestMethod.GET)
         public List<QuestionsAnswer> getAllAnswerQuestionControl(){
-           return questionAnswerInterfaceOperation.getAllQuestionAnswer();
+            try{
+                return questionAnswerInterfaceOperation.getAllQuestionAnswer();
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
         }
 
         //this is for one user
         @RequestMapping(value = "/getAllUSERAnswerQuestion/{email}", method = RequestMethod.GET)
         public List<QuestionsAnswer> getAllUserAnswerQuestionControl(@PathVariable(value = "email")String email){
-            User TheUser = getOneUserControl(email);
             try{
+                User TheUser = getOneUserControl(email);
                 return questionAnswerInterfaceOperation.getAllUserQuestionAnswer(TheUser);
             }
             catch (Exception x){
@@ -77,18 +87,21 @@ public class GET_Controller {
 
         @RequestMapping(value = "/getUserFriends/{email}", method = RequestMethod.GET)
         public  Object getUserFriendControl(@PathVariable(value = "email")String email) {
-            Object TheUser = getOneUserControl(email);
-            return friendsInterfaceOperation.getUserFriends(TheUser);
+            try{
+                Object TheUser = getOneUserControl(email);
+                return friendsInterfaceOperation.getUserFriends(TheUser);
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
         }
 
         /* ********************************************question**********************************************************/
         @RequestMapping(value = "/getUserQuestion/{email}", method = RequestMethod.GET)
         public List<Questions> getUserQuestionsControl(@PathVariable(value = "email")String email) {
-            User TheUser = getOneUserControl(email);
-            System.out.println(TheUser.getEmail());
-
             try{
-                 return questionsInterfaceOperation.getUserQuestions(TheUser);
+                User TheUser = getOneUserControl(email);
+                return questionsInterfaceOperation.getUserQuestions(TheUser);
             }catch (Exception e) {
                 System.out.println(e.getMessage());
                 return null;
@@ -97,8 +110,14 @@ public class GET_Controller {
 
         @RequestMapping(value = "/getUserQuestionsNumber/{email}", method = RequestMethod.GET)
         public  Object getUserQuestionsNumberControl(@PathVariable(value = "email")String email) {
-            User TheUser = getOneUserControl(email);
-            return questionsInterfaceOperation.getNumberOfQuestionsPerUser(TheUser);
+            try {
+                User TheUser = getOneUserControl(email);
+                return questionsInterfaceOperation.getNumberOfQuestionsPerUser(TheUser);
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+                return null;
+            }
+
         }
 
 
