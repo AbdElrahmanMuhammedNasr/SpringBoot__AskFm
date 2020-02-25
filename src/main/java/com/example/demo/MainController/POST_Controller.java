@@ -80,8 +80,6 @@ public class POST_Controller {
 
     }
 
-
-
     // add new question
     //user you want to ask him
     /*
@@ -108,25 +106,14 @@ public class POST_Controller {
     {
       "email": "T@T.com",
       "fullName": "TTTTTT",
-
-
-
        "userSetting": {
-
         "location": "tnata",
-
         "bio": "",
-
         "anotherWebSites": null,
-
         "hashTags": "",
-
         "userName": "TAREK",
-
         "dateOfBirth":null,
-
         "gender": "FEMALE",
-
         "privacyQuestion": null
        }
 }
