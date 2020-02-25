@@ -18,7 +18,6 @@ public class UPDATE_Controller {
     @Autowired
     private UserSettingInterfaceOperation userSettingInterfaceOperation;
 
-
     // update Setting
     /*
     * {
@@ -33,7 +32,6 @@ public class UPDATE_Controller {
 	"privacyQuestion":[true,true,true,true]
     }
 * */
-
     @PutMapping(value = "/updateSetting")
     public void updateSetting(@RequestBody UserSetting newSetting){
         try {

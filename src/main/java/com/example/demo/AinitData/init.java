@@ -13,6 +13,7 @@ import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 
 @Component
@@ -107,6 +108,9 @@ public class init implements CommandLineRunner {
             questionsAnswer1.setQuestion("HI");
             questionsAnswer1.setEmail("ahmed@ahmed.com");
             questionsAnswer1.setAnswer("HEY");
+
+
+
             questionsAnswer1.setDate((new Timestamp(new Date(1998,8,8).getTime())));
             questionsAnswer1.setUser(user1);
 

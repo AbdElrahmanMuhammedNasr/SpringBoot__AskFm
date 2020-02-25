@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200/")
@@ -46,6 +47,7 @@ public class POST_Controller {
            if(!ownerEmail.equals("null")) {
                User user = userInterfaceOperation.getUserByEmail(ownerEmail);
                questionsAnswer.setUser(user);
+               questionsAnswer.setDate((new Timestamp(new Date(1998,8,8).getTime())));
            }
             //save answer
            questionAnswerInterfaceOperation.saveAnswerofQuestion(questionsAnswer);

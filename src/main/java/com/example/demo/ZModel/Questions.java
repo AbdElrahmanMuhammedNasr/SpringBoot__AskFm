@@ -1,5 +1,8 @@
 package com.example.demo.ZModel;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.sql.Time;
@@ -13,8 +16,9 @@ public class Questions {
     private Long id;
     @Column
     private String question;
+
     @Column
-    @Email
+    @Nullable
     private String email; // the eamil of quesrioner
     @Column
     private Time time;

@@ -1,5 +1,8 @@
 package com.example.demo.ZModel;
 
+
+import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.sql.Date;
@@ -13,7 +16,7 @@ public class QuestionsAnswer {
     @GeneratedValue
     private Long id;
     @Column
-    @Email
+    @Nullable
     private String email ; // the questioner
     @Column
     private String answer;
