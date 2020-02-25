@@ -6,6 +6,8 @@ import com.example.demo.ServiceInterface.QuestionsInterfaceOperation;
 import com.example.demo.ServiceInterface.UserInterfaceOperation;
 import com.example.demo.ZModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -22,6 +24,9 @@ public class POST_Controller {
     private UserInterfaceOperation userInterfaceOperation;
     @Autowired
     private QuestionsInterfaceOperation questionsInterfaceOperation;
+
+    @Autowired
+    private JavaMailSender javaMailSender;
 //    @Autowired block list interface
 
 
@@ -115,11 +120,22 @@ public class POST_Controller {
             UserProfile userProfile = new UserProfile();
               user.setUserProfile(userProfile);
 
+            SimpleMailMessage message = new SimpleMailMessage();
+            message.setTo(user.getEmail());
+            message.setSubject("this is out code");
+            message.setText("12345");
+            javaMailSender.send(message);
+
             userInterfaceOperation.addUser(user);
         }catch (Exception ex){
             System.out.println(ex.getMessage());
 
         }
+    }
+
+    private boolean sendEmail(){
+
+    return true;
     }
 
 
