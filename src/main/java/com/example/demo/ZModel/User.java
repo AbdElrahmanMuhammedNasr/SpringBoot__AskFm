@@ -1,6 +1,8 @@
 package com.example.demo.ZModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.lang.Nullable;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,22 +14,26 @@ import java.util.List;
 
 @Entity
 @Table
+@ApiModel(description = "details about user ")
 public class User {
 
     @Id
     @GeneratedValue
+    @ApiModelProperty(notes = "this is unique id")
     private Long id;
 
 //    @Lob
 //    private  byte [] image ;
     @Column
     @Email
+    @ApiModelProperty(notes = "this is user email must be xxx@gmail.com")
     private String email;
+
     @Column
     @Length(min = 5 , max = 15)
+    @ApiModelProperty(notes = "the user full name 5<name<15")
     private String fullName;
 
-//    @Embedded
     @OneToOne(cascade = CascadeType.ALL)
     @Nullable
     private UserSetting userSetting;

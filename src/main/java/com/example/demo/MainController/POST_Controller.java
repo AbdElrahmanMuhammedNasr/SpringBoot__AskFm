@@ -5,6 +5,7 @@ import com.example.demo.ServiceInterface.QuestionAnswerInterfaceOperation;
 import com.example.demo.ServiceInterface.QuestionsInterfaceOperation;
 import com.example.demo.ServiceInterface.UserInterfaceOperation;
 import com.example.demo.ZModel.*;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -115,6 +116,7 @@ public class POST_Controller {
 }
     * */
     @PostMapping(value = "/addUser")
+    @ApiOperation(value ="add new User" , notes ="this api to add new user do not add id . it will added auto " ,response = void.class )
     public  void addNewUser(@RequestBody User user){
         try {
             UserProfile userProfile = new UserProfile();

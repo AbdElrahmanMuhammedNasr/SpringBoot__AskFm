@@ -4,6 +4,7 @@ import com.example.demo.ServiceInterface.*;
 import com.example.demo.ZModel.Questions;
 import com.example.demo.ZModel.QuestionsAnswer;
 import com.example.demo.ZModel.User;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +29,18 @@ public class GET_Controller {
      /* **************************************user****************************************************************/
 
         @RequestMapping(value = "/getOneUser/{email}", method = RequestMethod.GET)
+        @ApiOperation(value = "Find User ", notes = "this api used to find user using email" ,response = User.class)
         public User getOneUserControl(@PathVariable(value = "email") String email) {
-            System.out.println(email);
-//            System.out.println( "the data is "+userInterfaceOperation.getUserByEmail(email));
-            return  userInterfaceOperation.getUserByEmail(email);
+            try{
+                return  userInterfaceOperation.getUserByEmail(email);
+            }catch (Exception ex){
+                System.out.println("there is a error " +ex.getMessage() );
+                return null;
+            }
          }
 
         @RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+        @ApiOperation(value = "Find All User ", notes = "this api used to find All user " ,response = User.class)
         public Object getAllUsers() {
             return userInterfaceOperation.getAllUsers();
         }
