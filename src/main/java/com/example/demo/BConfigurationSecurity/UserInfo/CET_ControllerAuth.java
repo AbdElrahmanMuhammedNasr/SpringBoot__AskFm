@@ -1,5 +1,6 @@
 package com.example.demo.BConfigurationSecurity.UserInfo;
 
+import com.example.demo.ServiceInterface.UserAuthInterfaceOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ public class CET_ControllerAuth {
     private UserAuthInterfaceOperation userAuthInterfaceOperation;
 
     @GetMapping(value = "/checkUser/{EMAIL}/{PASSWORD}")
-    public Object isUserIn(@PathVariable("EMAIL")String email, @PathVariable("PASSWORD")String  password){
+    public boolean isUserIn(@PathVariable("EMAIL")String email, @PathVariable("PASSWORD")String  password){
         System.out.println("I am here" + email + password);
        return userAuthInterfaceOperation.login(email, password);
     }

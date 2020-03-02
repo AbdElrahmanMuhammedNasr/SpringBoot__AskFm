@@ -127,11 +127,11 @@ public class POST_Controller {
             UserProfile userProfile = new UserProfile();
               user.setUserProfile(userProfile);
 
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(user.getEmail());
-            message.setSubject("this is out code");
-            message.setText("12345");
-            javaMailSender.send(message);
+//            SimpleMailMessage message = new SimpleMailMessage();
+//            message.setTo(user.getEmail());
+//            message.setSubject("this is out code");
+//            message.setText("12345");
+//            javaMailSender.send(message);
 
             userInterfaceOperation.addUser(user);
         }catch (Exception ex){

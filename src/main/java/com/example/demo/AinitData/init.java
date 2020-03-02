@@ -1,19 +1,16 @@
 package com.example.demo.AinitData;
 
-import com.example.demo.BConfigurationSecurity.UserInfo.UserAuth;
-import com.example.demo.BConfigurationSecurity.UserInfo.UserAuthRepo;
+import com.example.demo.ZModel.UserAuth;
+import com.example.demo.XReposotry.UserAuthRepo;
 import com.example.demo.XReposotry.*;
 import com.example.demo.ZModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Calendar;
 
 
 @Component

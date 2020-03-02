@@ -1,5 +1,7 @@
-package com.example.demo.BConfigurationSecurity.UserInfo;
+package com.example.demo.ServiceInterfaceImp;
 
+import com.example.demo.ServiceInterface.UserAuthInterfaceOperation;
+import com.example.demo.XReposotry.UserAuthRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

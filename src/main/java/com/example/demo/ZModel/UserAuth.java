@@ -1,7 +1,7 @@
-package com.example.demo.BConfigurationSecurity.UserInfo;
+package com.example.demo.ZModel;
 
 import javax.persistence.*;
-//import javax.validation.constraints.Email;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table
@@ -10,7 +10,7 @@ public class UserAuth {
     @GeneratedValue
     private Long id;
     @Column
-//    @Email
+    @Email
     private String email;
     @Column
     private String password ;
@@ -33,6 +33,7 @@ public class UserAuth {
     }
 
     public void setPassword(String password) {
+
         this.password = password;
     }
 }

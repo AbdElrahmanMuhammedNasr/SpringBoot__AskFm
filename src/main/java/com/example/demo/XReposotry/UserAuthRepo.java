@@ -1,6 +1,6 @@
-package com.example.demo.BConfigurationSecurity.UserInfo;
+package com.example.demo.XReposotry;
 
-import com.example.demo.BConfigurationSecurity.UserInfo.UserAuth;
+import com.example.demo.ZModel.UserAuth;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserAuthRepo extends JpaRepository<UserAuth, Long> {

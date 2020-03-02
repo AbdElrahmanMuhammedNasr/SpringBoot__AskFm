@@ -1,4 +1,4 @@
-package com.example.demo.BConfigurationSecurity.UserInfo;
+package com.example.demo.ServiceInterface;
 
 public interface UserAuthInterfaceOperation {
 
